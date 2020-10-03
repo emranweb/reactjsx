@@ -1,17 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+//import react and react dom
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+//create a component
+const App= ()=>{
+    const text= "hello world and varibale"
+return <h1 style={{color:"red", fontSize:"100px"}}>{text}</h1>
+}
+
+
+
+//show in the app
+
+ReactDOM.render(<App/>, document.querySelector("#root"));
+
+
+
+
+
+
