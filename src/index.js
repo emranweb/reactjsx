@@ -5,7 +5,8 @@ import CommentDetails from "./CommentDetails";
 import faker from "faker";
 import CommentApprove from "./CommentApprove.js";
 import "./index.style.scss";
-
+import axios from "axios";
+import ImageList from "./ImageList.js";
 import SearchBar from "./SearchBar.js";
 /*
 //create a component
@@ -47,20 +48,42 @@ const App = () => {
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { formValue: "" };
+    this.state = {images:[] };
   }
 
   onFormSubmit=(value)=>{
-  this.setState({ formValue: value });
+  this.fetchData(value);
   }
 
+  fetchData= async (searchData)=>{
+   const response= await axios.get("https://api.unsplash.com/search/photos", {
+      params:{
+        query:searchData
+      },
+      headers:{
+        Authorization: "Client-ID pCGfXQwe-R9dvfIJv6tYRRjdH5J67DdqUZzIl9C7fnQ"
+      }
+    })
+   
+    this.setState({images:response.data.results})
+  }
+
+  searchShow= ()=>{
+    if(this.state.images.length===0){
+      return <h1>0 image found</h1>
+    }else{
+      return <ImageList images={this.state.images} />
+    }
+  }
+
+
   render() {
-    
-    console.log(this.state.formValue);
+      console.log(this.state.images)
 
     return (
       <div>
         <SearchBar onSubmitForm={this.onFormSubmit} />
+        {this.searchShow()}
       </div>
     );
   }

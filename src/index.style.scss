@@ -3,3 +3,17 @@
     margin: 0 auto;
     margin-top: 40px;
 }   
+
+.image-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-wrapper > div{
+    flex: 1 0 24%;
+    max-width: 24%;
+    margin: 10px;
+    img{
+        border-radius: 10px;
+    }
+}
