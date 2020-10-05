@@ -4,7 +4,10 @@ import ReactDOM from "react-dom";
 import CommentDetails from "./CommentDetails";
 import faker from "faker";
 import CommentApprove from "./CommentApprove.js";
+import "./index.style.scss";
 
+import SearchBar from "./SearchBar.js";
+/*
 //create a component
 const App = () => {
   const text = "hello world and varibale";
@@ -37,6 +40,31 @@ const App = () => {
     </div>
   );
 };
+
+
+*/
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = { formValue: "" };
+  }
+
+  onFormSubmit=(value)=>{
+  this.setState({ formValue: value });
+  }
+
+  render() {
+    
+    console.log(this.state.formValue);
+
+    return (
+      <div>
+        <SearchBar onSubmitForm={this.onFormSubmit} />
+      </div>
+    );
+  }
+}
 
 //show in the app
 
