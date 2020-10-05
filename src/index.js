@@ -68,14 +68,6 @@ class App extends React.Component {
     this.setState({images:response.data.results})
   }
 
-  searchShow= ()=>{
-    if(this.state.images.length===0){
-      return <h1>0 image found</h1>
-    }else{
-      return <ImageList images={this.state.images} />
-    }
-  }
-
 
   render() {
       console.log(this.state.images)
@@ -83,7 +75,7 @@ class App extends React.Component {
     return (
       <div>
         <SearchBar onSubmitForm={this.onFormSubmit} />
-        {this.searchShow()}
+        <ImageList images={this.state.images} />
       </div>
     );
   }
